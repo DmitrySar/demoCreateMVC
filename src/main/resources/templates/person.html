@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/form.css" rel="stylesheet">
+    <link href="/css/table.css" rel="stylesheet">
+    <title>Person</title>
+</head>
+<body>
+<!--Форма ввода-->
+<form method="post" action="/person" th:object="${person}">
+    <input placeholder="Фамилия" type="text" th:field="*{lastname}"><br>
+    <input placeholder="Имя" type="text" th:field="*{name}"><br>
+    <input placeholder="Отчество" type="text" th:field="*{surname}"><br>
+    <input placeholder="Дата рождения" type="date" th:field="*{birthday}"><br>
+    <input type="submit" value="Отправить">
+</form>
+
+<!--Вывод таблицы-->
+<table id="customers">
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Дата рождения</th>
+        <th>Удалить</th>
+    </tr>
+    <tr th:each="p: ${persons}">
+        <td th:text="${p.lastname}"/>
+        <td th:text="${p.name}" />
+        <td th:text="${p.surname}"/>
+        <td th:text="${p.birthday}"/>
+        <td><a th:href="@{person/del(id=${p.id})}"><img src="/img/delete.png" width="32" height="32"></a> </td>
+    </tr>
+</table>
+</body>
+</html>
