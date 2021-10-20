@@ -8,6 +8,18 @@
 </head>
 
 <body>
-
+<form method="post" th:object="${section}">
+    <input placeholder="Название" type="text" th:field="*{name}">
+    <input type="submit">
+</form>
+<table id="customers">
+    <tr>
+        <th>Name</th><th>Del</th>
+    </tr>
+    <tr th:each="s: ${sections}">
+        <td th:text="${s.name}" />
+        <td><a th:href="@{section/del(id=${s.id})}"><img src="/img/delete.png" width="32" height="32"></a> </td>
+    </tr>
+</table>
 </body>
 </html>
