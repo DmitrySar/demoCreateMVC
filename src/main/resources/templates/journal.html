@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/form.css" rel="stylesheet">
+    <link href="/css/table.css" rel="stylesheet">
+    <title>Person</title>
+</head>
+<body>
+<form method="post" th:object="${sectionToPerson}">
+    <select th:field="*{section.id}">
+        <option th:each="section : ${sections}" th:value="${section.id}" th:text="${section}"/>
+    </select>
+    <select th:field="*{person.id}">
+        <option th:each="person: ${persons}" th:value="${person.id}" th:text="${person}"/>
+    </select>
+    <input type="submit">
+</form>
+
+<table id="customers">
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Секция</th>
+    </tr>
+    <tr th:each="s: ${sectionToPersonList}">
+        <td th:text="${s.person.lastname}" />
+        <td th:text="${s.person.name}" />
+        <td th:text="${s.person.surname}" />
+        <td th:text="${s.section.name}" />
+    </tr>
+</table>
+</body>
+</html>
