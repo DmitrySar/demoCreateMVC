@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<header th:insert="~{header :: head}"></header>
 <form method="post" th:object="${section}">
     <input placeholder="Название" type="text" th:field="*{name}">
     <input type="submit">

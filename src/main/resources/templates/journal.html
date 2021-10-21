@@ -7,6 +7,7 @@
     <title>Person</title>
 </head>
 <body>
+<header th:insert="~{header :: head}"></header>
 <form method="post" th:object="${sectionToPerson}">
     <select th:field="*{section.id}">
         <option th:each="section : ${sections}" th:value="${section.id}" th:text="${section}"/>
